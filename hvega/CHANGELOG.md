@@ -1,6 +1,16 @@
 For the latest version of this document, please see
 [https://github.com/DougBurke/hvega/blob/master/hvega/CHANGELOG.md](https://github.com/DougBurke/hvega/blob/master/hvega/CHANGELOG.md).
 
+## 0.11.0.0
+
+The Vega-Lite tests are now validated against version 4.14 of the
+Vega-Lite schema.
+
+Note that `hvega` does __not__ support the (new to 4.14) ability to
+omit the type of a field when
+[it can be inferred](https://vega.github.io/vega-lite/docs/type.html).
+This capability may be added in a later update.
+
 ## 0.10.0.0
 
 The Vega-Lite tests are now validated against version 4.13 of the
