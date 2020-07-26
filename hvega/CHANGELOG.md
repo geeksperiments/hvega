@@ -11,6 +11,11 @@ omit the type of a field when
 [it can be inferred](https://vega.github.io/vega-lite/docs/type.html).
 This capability may be added in a later update.
 
+### New Constructors
+
+The `OrderChannel` type has gained `OBand` and `OTitle`/`ONoTitle`
+constructors.
+
 ## 0.10.0.0
 
 The Vega-Lite tests are now validated against version 4.13 of the

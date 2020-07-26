@@ -1275,6 +1275,11 @@ import qualified Graphics.Vega.VegaLite.Transform as VL
 -- omit the type of a field when
 -- [it can be inferred](https://vega.github.io/vega-lite/docs/type.html).
 -- This capability may be added in a later update.
+--
+-- __New constructors__
+--
+-- The 'VL.OrderChannel' type has gained 'VL.OBand' and 'VL.OTitle'/'VL.ONoTitle'
+-- constructors.
 
 -- $update01000
 -- The @0.10.0.0@ release updates @hvega@ to support version 4.13 of

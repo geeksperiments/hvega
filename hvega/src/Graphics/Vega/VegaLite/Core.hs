@@ -2547,6 +2547,18 @@ data OrderChannel
     | OAggregate Operation
       -- ^ Compute some aggregate summary statistics for a field to be encoded
       --   with an order channel.
+    | OBand Double
+      -- ^ For rect-based marks, define the mark size relative to the bandwidth of
+      --   band scales, bins, or time units: a value of 1 uses the range and 0.5
+      --   half the range. For other marks it defines the relative position in a
+      --   band of a stacked, binned, time unit, or band scale: if 0 the marks
+      --   will be positioned at the beginning of the band and 0.5 gives the
+      --   middle of the band.
+      --
+      --   The argument must be in the range 0 to 1, inclusive, but there is no
+      --   check on this.
+      --
+      --   @since 0.11.0.0
     | OBin [BinProperty]
       -- ^ Discretize numeric values into bins when encoding with an
       --   order channel.
@@ -2555,19 +2567,31 @@ data OrderChannel
     | OTimeUnit TimeUnit
       -- ^ Form of time unit aggregation of field values when encoding with
       --   an order channel.
+    | OTitle T.Text
+      -- ^ The title for the field.
+      --
+      --   Note that if both the field and axis, header, or legend titles are
+      --   defined than the latter (axis, header, or legend) will be used.
+      --
+      --   @since 0.11.0.0
+    | ONoTitle
+      -- ^ Remove the title.
+      --
+      --   @since 0.11.0.0
     | OmType Measurement
       -- ^ The level of measurement when encoding with an order channel.
 
 
 orderChannelProperty :: OrderChannel -> LabelledSpec
 orderChannelProperty (OAggregate op) = aggregate_ op
--- band
+orderChannelProperty (OBand x) = "band" .= x
 orderChannelProperty (OBin bps) = bin bps
 orderChannelProperty (OName s) = field_ s
 orderChannelProperty (ORepeat arr) = "field" .= object [repeat_ arr]
 orderChannelProperty (OSort ops) = sort_ ops
 orderChannelProperty (OTimeUnit tu) = timeUnit_ tu
--- title
+orderChannelProperty (OTitle s) = "title" .= s
+orderChannelProperty ONoTitle = "title" .= A.Null
 orderChannelProperty (OmType measure) = mtype_ measure
 
 
